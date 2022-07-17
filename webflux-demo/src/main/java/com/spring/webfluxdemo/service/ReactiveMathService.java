@@ -1,5 +1,6 @@
 package com.spring.webfluxdemo.service;
 
+import com.spring.webfluxdemo.dto.MultiplyRequestDto;
 import com.spring.webfluxdemo.dto.Response;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -27,5 +28,11 @@ public class ReactiveMathService {
 //                .doOnNext(i -> SleepUtil.sleepSeconds(1)) // this will do little delay
                 .doOnNext(i -> System.out.println("Reactive math-service processing: " + i))
                 .map(i -> new Response(i * input));
+    }
+
+    public Mono<Response> multiply(Mono<MultiplyRequestDto> multiplyRequestDtoMono) {
+        return multiplyRequestDtoMono
+                .map(dto -> dto.getFirstNumber() * dto.getSecondNumber())
+                .map(Response::new);
     }
 }
