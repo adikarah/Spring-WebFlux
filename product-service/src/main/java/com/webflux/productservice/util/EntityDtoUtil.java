@@ -16,7 +16,7 @@ public class EntityDtoUtil {
         return dto;
     }
 
-    public static Product toDto(ProductDto productDto) {
+    public static Product toProduct(ProductDto productDto) {
         Product product = new Product();
         /*
          * this will copy all the properties of product object to dto object
