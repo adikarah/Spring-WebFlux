@@ -45,6 +45,17 @@ public class ProductService {
                             .doOnNext(e -> e.setId(id)))
                     .flatMap(product -> productRepository.save(product))
                     .map(EntityDtoUtil::toDto);
-        } else throw new RuntimeException("No data found with given id: " + id);
+        } else throw new RuntimeException("No records found with given id: " + id);
+    }
+
+    public Mono<Void> deleteProduct(String id) {
+        /*
+            in reactive we need to subscribe each operation
+            otherwise that will not work so that's why we
+            need to return here in case of void also
+         */
+        if (productRepository.findById(id).block() != null) {
+            return productRepository.deleteById(id);
+        } else throw new RuntimeException("No records found with given id: " + id);
     }
 }
