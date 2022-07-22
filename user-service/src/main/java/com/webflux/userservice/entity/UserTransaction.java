@@ -1,0 +1,18 @@
+package com.webflux.userservice.entity;
+
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
+
+import java.time.LocalDateTime;
+
+@Data
+@ToString
+public class UserTransaction {
+
+    @Id
+    private Integer id;
+    private Integer userID;
+    private Integer amount;
+    private LocalDateTime transactionDate;
+}
