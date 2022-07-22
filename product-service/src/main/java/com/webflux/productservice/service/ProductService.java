@@ -53,8 +53,6 @@ public class ProductService {
             otherwise that will not work so that's why we
             need to return here in case of void also
          */
-        if (productRepository.findById(id).block() != null) {
-            return productRepository.deleteById(id);
-        } else throw new RuntimeException("No records found with given id: " + id);
+        return productRepository.deleteById(id);
     }
 }
