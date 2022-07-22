@@ -36,13 +36,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <!--			<scope>test</scope>-->
-            <!-- We're commenting test scope because we're going to use
-            embedded MongoDB in development-->
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>de.flapdoodle.embed</groupId>-->
+<!--            <artifactId>de.flapdoodle.embed.mongo</artifactId>-->
+<!--            &lt;!&ndash;			<scope>test</scope>&ndash;&gt;-->
+<!--            &lt;!&ndash; We're commenting test scope because we're going to use-->
+<!--            embedded MongoDB in development&ndash;&gt;-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
