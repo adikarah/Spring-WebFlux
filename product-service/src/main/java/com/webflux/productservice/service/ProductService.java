@@ -39,13 +39,12 @@ public class ProductService {
           entity, and then we will save the updated one and convert that
           into the form of productDto and will return that
          */
-        if (productRepository.findById(id).block() != null) {
-            return productRepository.findById(id)
-                    .flatMap(product -> productDto.map(EntityDtoUtil::toProduct)
-                            .doOnNext(e -> e.setId(id)))
-                    .flatMap(product -> productRepository.save(product))
-                    .map(EntityDtoUtil::toDto);
-        } else throw new RuntimeException("No records found with given id: " + id);
+        return productRepository.findById(id)
+                .flatMap(product -> productDto
+                        .map(EntityDtoUtil::toProduct)
+                        .doOnNext(e -> e.setId(id)))
+                .flatMap(product -> productRepository.save(product))
+                .map(EntityDtoUtil::toDto);
     }
 
     public Mono<Void> deleteProduct(String id) {
